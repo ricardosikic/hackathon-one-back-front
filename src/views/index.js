@@ -4,6 +4,9 @@ import React from 'react';
 // Context
 import { Context } from '../context/context';
 
+// React-bootstrap
+import { Button } from 'react-bootstrap';
+
 class Home extends React.Component {
     render() {
         return(
@@ -11,7 +14,10 @@ class Home extends React.Component {
                 {context => {
                     console.log(context)
                     return(
-                        <h1>{context.text}</h1>
+                        <div>
+                            <h1>{context.text}</h1>
+                            <Button>Boton</Button>
+                        </div>
                     )
                 }}
             </Context.Consumer>

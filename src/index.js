@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 // Context Provider
 import AppProvider from '../src/context/context';
 
+// React-bootstrap styles
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
