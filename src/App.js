@@ -1,5 +1,5 @@
 // Components
-import Home from '../src/views/index.js';
+import Home from '../src/views/Home/index';
 
 function App() {
   return (
