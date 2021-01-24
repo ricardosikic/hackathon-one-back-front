@@ -17,7 +17,7 @@ class Home extends React.Component {
                 {context => {
                     return(
                         <Container fluid className="home-container">
-                            <h1 className="text-center">Hackathon book</h1>
+                            <h1 className="text-center">Hola Vecina!</h1>
                             <Container className="home-button-container">
                                 <Button className="home-button">Sign in</Button>
                                 <Button className="home-button">Sign up</Button>
