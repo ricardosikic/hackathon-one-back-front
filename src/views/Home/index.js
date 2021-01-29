@@ -10,7 +10,8 @@ import { Button, Container } from 'react-bootstrap';
 // Style
 import './style.sass';
 
-const homeImage = require('../../assets/home/home-image.png').default;
+import homeImage from '../../assets/home/home-image.png';
+console.log(homeImage)
 
 class Home extends React.Component {
     render() {
