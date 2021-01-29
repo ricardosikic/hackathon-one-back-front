@@ -15,6 +15,7 @@
         & > .find-books-text
             width: max-content
             font-size: 50px
+            color: #FFF
 
     & > .home-image-picture
         width: max-content
@@ -33,3 +34,24 @@
         margin-top: 310px
         height: 60%
         clip-path: polygon(57% 1%, 100% 56%, 100% 100%, 0 100%, 0 56%)
+
+
+
+@media (max-width: 500px)
+    .home-container
+        & > .home-content-left
+            margin: -20% auto
+            color: #FFF
+
+            & > .find-books-text
+                font-size: 40px
+          
+        & > .home-image-picture
+            margin: 90% auto
+            margin-left: 30%
+            & > img
+                width: 50%
+
+        & > .home-figure
+            margin-top: 100%
+            clip-path: polygon(57% 1%, 100% 36%, 100% 100%, 0 100%, 0 36%)
