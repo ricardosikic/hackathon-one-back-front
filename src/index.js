@@ -10,10 +10,15 @@ import AppProvider from '../src/context/context';
 // React-bootstrap styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+// React router dom
+import { BrowserRouter } from 'react-router-dom';
+
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')

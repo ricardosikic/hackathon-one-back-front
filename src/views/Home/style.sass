@@ -1,12 +1,35 @@
 .home-container
-    background: red
-    height: 400px
+    background: #9383F8
+    position: fixed
+    top: 0
     width: 100%
+    height: 100%
+    background-size: cover
 
-    & > .home-button-container
+    & > .home-content-left
+        transform: translateY(200px)
+        height: 60px
         width: max-content
-        margin: 0 auto
+        margin-left: 200px
 
-        & > .home-button:nth-child(1)
-            margin-right: 10px
-            
+        & > .find-books-text
+            width: max-content
+            font-size: 50px
+
+    & > .home-image-picture
+        width: max-content
+        height: 410px
+        z-index: 2
+        margin-top: 160px
+        margin-left: 60%
+        position: absolute
+
+        & > img
+            z-index: 2
+    
+    & > .home-figure
+        background: yellow
+        width: 100%
+        margin-top: 310px
+        height: 60%
+        clip-path: polygon(57% 1%, 100% 56%, 100% 100%, 0 100%, 0 56%)

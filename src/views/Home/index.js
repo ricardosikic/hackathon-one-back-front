@@ -10,22 +10,24 @@ import { Button, Container } from 'react-bootstrap';
 // Style
 import './style.sass';
 
+const homeImage = require('../../assets/home/home-image.png').default;
+
 class Home extends React.Component {
     render() {
         return(
-            <Context.Consumer>
-                {context => {
-                    return(
-                        <Container fluid className="home-container">
-                            <h1 className="text-center">Hola Vecina!</h1>
-                            <Container className="home-button-container">
-                                <Button className="home-button">Sign in</Button>
-                                <Button className="home-button">Sign up</Button>
-                            </Container>
-                        </Container>
-                    )
-                }}
-            </Context.Consumer>
+            <div fluid className="home-container">
+                <div className="home-content-left">
+                    <h1 className="find-books-text">FIND BOOKS</h1>
+                    <h1 className="find-books-text">YOU LIKE</h1>
+                    <Button>SIGN UP</Button>
+                </div>
+                <div className="home-image-picture">
+                    <img src={homeImage ? homeImage : ''} />
+                </div>
+                <div className="home-figure">
+
+                </div>
+            </div>
         );
     }
 }
