@@ -15,11 +15,11 @@ import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppProvider>
+{/*     <AppProvider> */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </AppProvider>
+{/*     </AppProvider> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

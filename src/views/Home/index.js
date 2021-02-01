@@ -1,6 +1,9 @@
 // React
 import React from 'react';
 
+// React router dom
+import { Link } from 'react-router-dom';
+
 // Style
 import './style.sass';
 
@@ -13,7 +16,7 @@ class Home extends React.Component {
                 <div className="home-content-left">
                     <h1 className="find-books-text">FIND BOOKS</h1>
                     <h1 className="find-books-text">YOU LIKE</h1>
-                    <button>SIGN UP</button>
+                    <button><Link to='/test'>SIGN UP</Link></button>
                 </div>
                 <div className="home-image-picture">
                     <img src={homeImage} />

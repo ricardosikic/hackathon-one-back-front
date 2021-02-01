@@ -5,11 +5,14 @@ import React, { Fragment } from 'react';
 import Home from '../src/views/Home/index';
 import NavBar from './components/navbar';
 
+// Routes
+import Routes from './route';
+
 function App() {
   return (
     <Fragment>
-      <Home />
       <NavBar />
+      <Routes/>
     </Fragment>
   );
 }
