@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 // Views
 import Home from '../views/home';
 import SignUp from '../views/signup';
+import SignIn from '../views/signin';
 
 class Routes extends React.Component {
   render() {
@@ -18,6 +19,10 @@ class Routes extends React.Component {
             <Route
               path="/signup"
               component={SignUp} />
+            <Route
+              path="/signin"
+              component={SignIn} 
+            />
           </Switch>
     );
   }

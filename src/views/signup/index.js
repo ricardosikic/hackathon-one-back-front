@@ -8,7 +8,7 @@ import SignUpForm from '../../components/signupForm';
 import './style.sass';
 
 // Images
-import girlReading from '../../assets/images/signup/girl-reading.png';
+import girlReadingFront from '../../assets/images/signup/girl-reading-second.png';
 
 class SignUp extends React.Component {
     render() {
@@ -19,7 +19,7 @@ class SignUp extends React.Component {
                 </div>
                 <div className="signUp-image">
                     <div className="signUp-image-container">
-                        <img src={girlReading}/>
+                        <img src={girlReadingFront}/>
                     </div>
                 </div>
             </div>
