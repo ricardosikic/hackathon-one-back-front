@@ -1,33 +1,25 @@
 // React
 import React from 'react';
 
-// React router-dom
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    withRouter
-} from "react-router-dom";
+// React-router-dom
+import { Route, Switch } from 'react-router-dom';
 
-// Components
-import SignIn from '../components/SignIn';
+// Views
+import Test from '../views/Test';
+import Home from '../views/Home';
 
-
-class NavigationRoutes extends React.Component {
-    render() {
-        return(
-            <Router>
-                <div>
-                    <Switch>
-                        <Route exact path="/sign-in">
-                            <SignIn />
-                        </Route>
-                    </Switch>
-                </div>
-            </Router>
-        );
-    }
+class Routes extends React.Component {
+  render() {
+    return (
+          <Switch>
+            <Route
+              path="/"
+              component={Home} exact/>
+            <Route
+              path="/test"
+              component={Test} />
+          </Switch>
+    );
+  }
 }
-
-export default withRouter(NavigationRoutes);
+export default Routes;
