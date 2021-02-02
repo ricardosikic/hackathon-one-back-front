@@ -2,17 +2,16 @@
 import React, { Fragment } from 'react';
 
 // Components
-import Home from '../src/views/Home/index';
 import NavBar from './components/navbar';
 
 // Routes
-import Routes from './route';
+import Routes from './routes';
 
 function App() {
   return (
     <Fragment>
       <NavBar />
-      <Routes/>
+      <Routes />
     </Fragment>
   );
 }

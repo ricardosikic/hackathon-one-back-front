@@ -4,10 +4,8 @@ import React from 'react';
 // React-bootstrap
 import { 
     Navbar, 
-    Nav, 
-    NavDropdown, 
+    Nav,
     Form, 
-    FormControl, 
     Button 
 } from 'react-bootstrap';
 
