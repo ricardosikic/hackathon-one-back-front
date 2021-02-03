@@ -17,20 +17,24 @@ class AppProvider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            text: 'hello world'
+            store: {},
+            actions: {
+                loginData: this.loginData
+            }
         }
     }
 
-    loginInputData = (text, name) => {
-        const { loginCredentials } = this.state;
+    loginData = (/* text, name */e) => {
+        console.log(e)
+/*         const { loginCredentials } = this.state;
         const loginData = { [name]: text }
         const newData = {...loginCredentials, ...loginData};
         this.setState({
             loginCredentials: newData
-        });
+        }); */
     }
 
-    signIn = async(e) => {
+    /* signIn = async(e) => {
        const { loginCredentials } = this.state;
 
        this.setState({
@@ -62,7 +66,7 @@ class AppProvider extends React.Component {
             signUpCredentials: newData
         });
     }
-
+ */
 
 
     render() {
