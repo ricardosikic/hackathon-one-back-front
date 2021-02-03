@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router-dom';
 import Home from '../views/home';
 import SignUp from '../views/signup';
 import SignIn from '../views/signin';
+import BookHome from '../views/bookviews/bookshome';
 
 class Routes extends React.Component {
   render() {
@@ -22,6 +23,10 @@ class Routes extends React.Component {
             <Route
               path="/signin"
               component={SignIn} 
+            />
+            <Route
+              path="/books/home"
+              component={BookHome} 
             />
           </Switch>
     );

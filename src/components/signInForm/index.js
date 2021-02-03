@@ -5,7 +5,8 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
 // React-router-dom
-
+import { Link } from 'react-router-dom';
+ 
 // Style
 import './style.sass';
 
@@ -22,7 +23,7 @@ class SignInForm extends React.Component {
                     <Form.Control type="password" placeholder="Password*" />
                 </Form.Group>
                 <Button variant="primary" className="signin-button" type="submit">
-                    SIGN IN
+                    <Link to="/books/home">SIGN IN</Link>
                 </Button>
                 <p>Don't have an account?, signup</p>
             </Form>
