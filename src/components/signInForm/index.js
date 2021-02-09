@@ -4,9 +4,6 @@ import React from 'react';
 // React-bootstrap
 import { Form, Button } from 'react-bootstrap';
 
-// React-router-dom
-import { Link } from 'react-router-dom';
-
 // Context
 import { Context } from '../../context/context';
  
@@ -22,14 +19,14 @@ class SignInForm extends React.Component {
                         <Form className="signin-form">
                             <h1 className="signin-title">SIGN IN</h1>
                             <Form.Group>
-                                <Form.Control onChange={e => ctx.actions.loginData(e)} type="email" placeholder="Email*" />
+                                <Form.Control name="email" onChange={e => ctx.actions.loginData(e)} type="email" placeholder="Email*" />
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Control onChange={e => ctx.actions.loginData(e)} type="password" placeholder="Password*" />
+                                <Form.Control name="password" onChange={e => ctx.actions.loginData(e)} type="password" placeholder="Password*" />
                             </Form.Group>
-                            <Button variant="primary" className="signin-button" type="submit">
-                                <Link to="/books/home">SIGN IN</Link>
+                            <Button variant="primary" onClick={e => ctx.actions.signIn(e)} className="signin-button" type="submit">
+                                SIGN IN
                             </Button>
                             <p>Don't have an account?, signup</p>
                         </Form>
