@@ -2,72 +2,73 @@
 import React from 'react';
 
 // React apollo
-/* import { graphql } from 'react-apollo';
-import compose from 'lodash.flowright'; */
+import { graphql } from 'react-apollo';
+import compose from 'lodash.flowright';
+
+// React-router-dom
+import { withRouter } from 'react-router-dom';
+
+// Mutations
+import mutations from './graph-queries/mutations';
 
 // App context
 export const Context = React.createContext();
-
-/* // Mutations
-import mutations from './mutation';
- */
-
 
 class AppProvider extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            store: {},
+            store: {
+                loginData: {
+                    email: '',
+                    password: ''
+                },
+            },
             actions: {
-                loginData: this.loginData
+                loginData: this.loginData,
+                signIn: this.signIn
             }
         }
     }
 
-    loginData = (/* text, name */e) => {
-        console.log(e)
-/*         const { loginCredentials } = this.state;
-        const loginData = { [name]: text }
-        const newData = {...loginCredentials, ...loginData};
+    loginData = (e) => {
+        const { name, value } = e.target;
+        const { store: { loginData } } = this.state;
+
+        const inputData = { [name]: value };
+        const newData = { ...loginData, ...inputData };
+        
         this.setState({
-            loginCredentials: newData
-        }); */
-    }
-
-    /* signIn = async(e) => {
-       const { loginCredentials } = this.state;
-
-       this.setState({
-         isLoadingAuth: true
-       });
-
-       const { signInUser } = this.props;
-       try {
-           const resp = await signInUser({variables: {
-                email: loginCredentials.email,
-                password: loginCredentials.password
-           }});
-
-           this.setState({
-               isUserAuthenticated: true,
-               isLoadingAuth: false
-           });
-           this.storeData(resp.data.signInUser.token);
-       } catch(err) {
-           console.log(err);
-       }
-    }
-
-    signUpInputData = (text, name) => {
-        const { signUpCredentials } = this.state;
-        const signUpData = { [name]: text }
-        const newData = {...signUpCredentials, ...signUpData}
-        this.setState({
-            signUpCredentials: newData
+            store: {
+                loginData: newData
+            }
         });
     }
- */
 
+    signIn = async(e) => {
+        e.preventDefault();
+        const { store: { loginData, loggedIn } } = this.state;
+        const { signinUser, history } = this.props;
+
+        const variables = {
+            email: loginData.email,
+            password: loginData.password
+        };
+        
+        try {
+            const response = await signinUser({variables});
+            
+            if(response) {
+              const { data: {signinUser:{token}} } = response;
+              localStorage.setItem('token', token);
+              history.push('/books/home');
+            }
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+ 
 
     render() {
         return(
@@ -78,6 +79,8 @@ class AppProvider extends React.Component {
     }
 }
 
-export default AppProvider;
-/*     graphql(mutations.signInUser, { name: 'signInUser' }),
-    graphql(mutations.createUser, { name: 'createUser' }) */
+export default compose(
+    withRouter,
+    graphql(mutations.signinUser, { name: 'signinUser' }),
+    /* graphql(mutations.createUser, { name: 'createUser' }) */
+)(AppProvider);
