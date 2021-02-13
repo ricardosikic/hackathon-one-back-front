@@ -14,6 +14,23 @@ const mutations = {
         }
       }
     `,
+    createUser: gql`
+     mutation createUser($firstName: String!, $email: String!, $password: String!) {
+       createUser(input: {
+         firstName: $firstName
+         authProvider: {
+           credentials: {
+             email: $email,
+             password: $password
+           }
+         }
+       }) {
+         user {
+           firstName
+         }
+       }
+     }
+    `,
 }
 
 export default mutations;

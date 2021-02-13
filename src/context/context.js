@@ -23,10 +23,17 @@ class AppProvider extends React.Component {
                     email: '',
                     password: ''
                 },
+                signUpData: {
+                    firstName: '',
+                    email: '',
+                    password: ''
+                }
             },
             actions: {
                 loginData: this.loginData,
-                signIn: this.signIn
+                signIn: this.signIn,
+                signUpData: this.signUpData,
+                signUp: this.signUp
             }
         }
     }
@@ -47,7 +54,7 @@ class AppProvider extends React.Component {
 
     signIn = async(e) => {
         e.preventDefault();
-        const { store: { loginData, loggedIn } } = this.state;
+        const { store: { loginData } } = this.state;
         const { signinUser, history } = this.props;
 
         const variables = {
@@ -68,6 +75,39 @@ class AppProvider extends React.Component {
             console.log(error);
         }
     }
+
+    signUpData = (e) => {
+        const { value, name } = e.target;
+        const { store: { signUpData } } = this.state;
+        
+        const signUpObject = { [name]: value };
+        const newData = { ...signUpData, ...signUpObject };
+        
+        this.setState({
+            store: {
+                signUpData: newData
+            }
+        });
+    }
+
+    signUp = async(e) => {
+        e.preventDefault();
+        const { store: { signUpData } } = this.state;
+        const { createUser, history } = this.props;
+        console.log(this.props)
+        const variables = {
+            firstName: signUpData.firstName,
+            email: signUpData.email,
+            password: signUpData.password
+        };
+        try {
+            const response = await createUser({variables});
+            // have to pass state to redirect !
+            history.push('/books/home');
+        } catch (err) {
+            console.log(err);
+        }
+    }
  
 
     render() {
@@ -82,5 +122,5 @@ class AppProvider extends React.Component {
 export default compose(
     withRouter,
     graphql(mutations.signinUser, { name: 'signinUser' }),
-    /* graphql(mutations.createUser, { name: 'createUser' }) */
+    graphql(mutations.createUser, { name: 'createUser' })
 )(AppProvider);
