@@ -19,20 +19,6 @@ class Routes extends React.Component {
   render() {
     return (
           <Switch>
-            {/* <Route
-              path="/"
-              component={Home} exact/>
-            <Route
-              path="/signup"
-              component={SignUp} />
-            <Route
-              path="/signin"
-              component={SignIn} 
-            />
-            <Route
-              path="/books/home"
-              component={BookHome} 
-            /> */}
             <PublicRoute component={Home} restricted={false} path="/" exact />
             <PublicRoute component={SignIn} restricted={true} path="/signin" exact />
             <PublicRoute component={SignUp} restricted={true} path="/signup" exact />
