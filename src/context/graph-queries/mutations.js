@@ -31,6 +31,13 @@ const mutations = {
        }
      }
     `,
+    signoutUser: gql`
+     mutation signoutUser{
+      signoutUser(input:{}) {
+        clientMutationId
+      }
+     }
+    `,
 }
 
 export default mutations;

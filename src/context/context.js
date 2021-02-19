@@ -27,15 +27,26 @@ class AppProvider extends React.Component {
                     firstName: '',
                     email: '',
                     password: ''
-                }
+                },
+                isLogged: false
             },
             actions: {
                 loginData: this.loginData,
                 signIn: this.signIn,
                 signUpData: this.signUpData,
-                signUp: this.signUp
+                signUp: this.signUp,
+                signOut: this.signOut
             }
         }
+    }
+
+    componentDidMount() {
+        if(localStorage.getItem('token') !== null)
+         this.setState({
+             store: {
+                 isLogged: true
+             }
+         })
     }
 
     loginData = (e) => {
@@ -68,11 +79,16 @@ class AppProvider extends React.Component {
             if(response) {
               const { data: {signinUser:{token}} } = response;
               localStorage.setItem('token', token);
+              this.setState({
+                  store: {
+                      isLogged: true
+                  }
+              });
               history.push('/books/home');
             }
             
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
 
@@ -94,7 +110,7 @@ class AppProvider extends React.Component {
         e.preventDefault();
         const { store: { signUpData } } = this.state;
         const { createUser, history } = this.props;
-        console.log(this.props)
+ 
         const variables = {
             firstName: signUpData.firstName,
             email: signUpData.email,
@@ -103,9 +119,28 @@ class AppProvider extends React.Component {
         try {
             const response = await createUser({variables});
             // have to pass state to redirect !
+            this.setState({
+                isLogged: true
+            })
             history.push('/books/home');
         } catch (err) {
             console.log(err);
+        }
+    }
+
+    signOut = async() => {
+        const { signoutUser, history } = this.props;
+        try {
+            await signoutUser();
+            localStorage.removeItem('token');
+            history.push('/signin');
+            this.setState({
+                store: {
+                    isLogged: false
+                }
+            });
+        } catch(err) {
+            console.log(err.message);
         }
     }
  
@@ -122,5 +157,6 @@ class AppProvider extends React.Component {
 export default compose(
     withRouter,
     graphql(mutations.signinUser, { name: 'signinUser' }),
-    graphql(mutations.createUser, { name: 'createUser' })
+    graphql(mutations.createUser, { name: 'createUser' }),
+    graphql(mutations.signoutUser, { name: 'signoutUser' })
 )(AppProvider);

@@ -6,29 +6,20 @@ import './style.sass';
 
 // Components
 import AuthNav from '../navbar/authNavigation';
+import { Context } from '../../context/context';
 
 class NavBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            loggedIn: false
-        }
-    }
-
-    componentDidMount() {
-        const token = localStorage.getItem('token');
-        if(token !== null) {
-            this.setState({
-                loggedIn: true
-            });
-        }
-    }
 
     render() {
-        const { loggedIn } = this.state;
 
         return(
-           <AuthNav loggedIn={loggedIn} />
+           <Context.Consumer>
+                {ctx => {
+                    return(
+                        <AuthNav loggedIn={ctx.store.isLogged} />
+                    )
+                }}
+           </Context.Consumer>
         );
     }
 }
