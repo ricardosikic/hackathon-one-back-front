@@ -4,27 +4,39 @@ import React , { useState, useEffect } from 'react';
 // React-router-dom
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({component: Component, ...rest}) => {
+// Context
+import { Context } from '../../context/context';
 
-    const [loggedIn, setLoggedIn] = useState(false);
+class PrivateRoute extends React.Component {
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if(token !== null) {
-            setLoggedIn(true);
+    constructor(props) {
+        super(props);
+        this.state = {
+            isToken: false
         }
-    }, []);
-
-    const redirectToSignIn = () => {
-        <Redirect to="/signin" />
     }
 
-    return(
-        <Route {...rest} render={props => (
-            loggedIn ? <Component {...props} /> : redirectToSignIn()
-         )} 
-        />
-    )
+    redirectToSignIn = () => {
+        <Redirect to="/" />
+    }
+
+    render() {
+        const {component: Component, ...rest} = this.props;
+        const { isToken } = this.state;
+
+        return(
+            <Context.Consumer>
+                {ctx  => {
+                    return(
+                        <Route {...rest} render={props => (
+                            ctx.store.isLogged ? <Component {...props} /> : this.redirectToSignIn()
+                         )} 
+                        />
+                    )
+                }}
+            </Context.Consumer>
+        );
+    }
 }
 
 export default PrivateRoute;
