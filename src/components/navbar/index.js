@@ -11,7 +11,6 @@ import { Context } from '../../context/context';
 class NavBar extends React.Component {
 
     render() {
-
         return(
            <Context.Consumer>
                 {ctx => {

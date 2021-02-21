@@ -94,6 +94,7 @@ class AppProvider extends React.Component {
 
     signUpData = (e) => {
         const { value, name } = e.target;
+        console.log(name)
         const { store: { signUpData } } = this.state;
         
         const signUpObject = { [name]: value };
@@ -110,6 +111,8 @@ class AppProvider extends React.Component {
         e.preventDefault();
         const { store: { signUpData } } = this.state;
         const { createUser, history } = this.props;
+
+        console.log(signUpData.firstName)
  
         const variables = {
             firstName: signUpData.firstName,
@@ -118,13 +121,16 @@ class AppProvider extends React.Component {
         };
         try {
             const response = await createUser({variables});
-            // have to pass state to redirect !
-            this.setState({
-                isLogged: true
-            })
-            history.push('/books/home');
+            if(response) {
+                this.setState({
+                    store: {
+                        isLogged: true
+                    }
+                })
+                history.push('/books/home');
+            }
         } catch (err) {
-            console.log(err);
+            console.log(err.message);
         }
     }
 
