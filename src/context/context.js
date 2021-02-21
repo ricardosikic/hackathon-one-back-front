@@ -111,8 +111,6 @@ class AppProvider extends React.Component {
         e.preventDefault();
         const { store: { signUpData } } = this.state;
         const { createUser, history } = this.props;
-
-        console.log(signUpData.firstName)
  
         const variables = {
             firstName: signUpData.firstName,
@@ -122,6 +120,8 @@ class AppProvider extends React.Component {
         try {
             const response = await createUser({variables});
             if(response) {
+                const { data: { createUser: { sessionToken } } } = response;
+                localStorage.setItem('token', sessionToken);
                 this.setState({
                     store: {
                         isLogged: true

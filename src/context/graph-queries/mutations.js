@@ -28,6 +28,7 @@ const mutations = {
          user {
            firstName
          }
+         sessionToken
        }
      }
     `,
