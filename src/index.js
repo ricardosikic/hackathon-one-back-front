@@ -1,5 +1,7 @@
+// React
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -16,6 +18,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // React router dom
 import { BrowserRouter } from 'react-router-dom';
 
+// Environments variables
+import { config } from '../src/constant';
+
 // 1
 import { ApolloProvider } from 'react-apollo';
 import { ApolloClient } from 'apollo-client';
@@ -25,7 +30,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 // 2
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3000/graphql'
+  uri: config.url.API_URL
 });
 
 // 3
