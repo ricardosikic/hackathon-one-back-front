@@ -12,4 +12,5 @@ const dev = {
     }
 }
 
+console.log(process.env.NODE_ENV)
 export const config = process.env.NODE_ENV === 'development' ? dev : prod;
