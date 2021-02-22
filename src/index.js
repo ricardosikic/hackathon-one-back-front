@@ -57,6 +57,7 @@ export const client = new ApolloClient({
 
 ReactDOM.render(
   <React.StrictMode>
+    {console.log(config)}
     <BrowserRouter>
       <ApolloProvider client={client}>
         <AppProvider history={history}>
