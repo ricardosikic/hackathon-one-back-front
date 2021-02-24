@@ -12,5 +12,5 @@ const dev = {
     }
 }
 
-console.log(process.env.REACT_APP_API_URI || 'http:localhost:3000')
-export const config = process.env.NODE_ENV === 'development' ? dev : prod;
+console.log(process.env.NODE_ENV)
+export const config = prod;
