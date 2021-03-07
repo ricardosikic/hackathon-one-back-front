@@ -14,6 +14,7 @@ import mutations from './graph-queries/mutations';
 // App context
 export const Context = React.createContext();
 
+
 class AppProvider extends React.Component {
     constructor(props) {
         super(props);
@@ -94,7 +95,6 @@ class AppProvider extends React.Component {
 
     signUpData = (e) => {
         const { value, name } = e.target;
-        console.log(name)
         const { store: { signUpData } } = this.state;
         
         const signUpObject = { [name]: value };

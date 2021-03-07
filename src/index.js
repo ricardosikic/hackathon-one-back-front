@@ -41,23 +41,21 @@ const authLink = setContext((_, { headers }) => {
    return {
      headers: {
        ...headers,
-       authorization: token ? `Bearer ${token}` : "",
+       Authorization: token ? `${token}` : "",
      }
    }
 });
 
 
 // 4
-export const client = new ApolloClient({
+const client = new ApolloClient({
   link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 })
-
 
 
 ReactDOM.render(
   <React.StrictMode>
-    {console.log(config)}
     <BrowserRouter>
       <ApolloProvider client={client}>
         <AppProvider history={history}>
