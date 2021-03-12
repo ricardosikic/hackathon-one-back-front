@@ -13,6 +13,17 @@ const queries = {
          }
      }
     `,
+    getMoreBooks: gql`
+     query getMoreBooks($bookId: ID!) {
+         loadMoreBooks(bookId: $bookId) {
+            id
+            coverImage
+            author
+            title
+         }
+     }
+    `,
+
 }
 
 export default queries;
