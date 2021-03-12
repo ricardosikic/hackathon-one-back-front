@@ -13,4 +13,4 @@ const dev = {
 }
 
 console.log(process.env.NODE_ENV)
-export const config = dev;
+export const config = prod;
