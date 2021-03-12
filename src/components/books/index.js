@@ -12,15 +12,14 @@ import {
 // Styles
 import './style.sass';
 
-const Books = ({books = []}) => {
+const Books = ({books}) => {
 
     const bookCard = () => {
 
         return (
             books.map((book, ix) => {
-                console.log(book)
                 return(
-                    <Col className="book-col" xs={12} sm={3}>
+                    <Col key={ix} className="book-col" xs={12} sm={3}>
                         <Card className="book-card">
                             <Card.Img variant="top" className="book-card-image" src={book.coverImage} />
                                 <Card.Body>
