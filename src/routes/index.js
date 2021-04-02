@@ -9,6 +9,7 @@ import Home from '../views/home';
 import SignUp from '../views/signup';
 import SignIn from '../views/signin';
 import BookHome from '../views/bookviews/bookshome';
+import Dashboard from '../views/admin/dashboard';
 
 // Routes private && public
 import PrivateRoute from './privateRoutes';
@@ -23,6 +24,7 @@ class Routes extends React.Component {
             <PublicRoute component={SignIn} restricted={true} path="/signin" exact />
             <PublicRoute component={SignUp} restricted={true} path="/signup" exact />
             <PrivateRoute component={BookHome} path="/books/home" exact />
+            <PrivateRoute component={Dashboard} path="/admin/dashboard" exact />
           </Switch>
     );
   }

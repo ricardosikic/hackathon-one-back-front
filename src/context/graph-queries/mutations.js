@@ -11,6 +11,10 @@ const mutations = {
             }
         }) {
             token
+            user {
+              firstName
+              roleId
+            }
         }
       }
     `,

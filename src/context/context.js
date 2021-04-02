@@ -76,16 +76,20 @@ class AppProvider extends React.Component {
         
         try {
             const response = await signinUser({variables});
-            
             if(response) {
-              const { data: {signinUser:{token}} } = response;
+              const { data: {signinUser:{token, user}} } = response;
               localStorage.setItem('token', token);
               this.setState({
                   store: {
                       isLogged: true
                   }
               });
-              history.push('/books/home');
+              if(user.roleId === 2) {
+                  history.push('/admin/dashboard');
+              } else {
+                  history.push('/books/home');
+              }
+
             }
             
         } catch (error) {
